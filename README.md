@@ -115,6 +115,7 @@ Give a ⭐️ if you like this project!
 - [React Documentation](https://reactjs.org/docs/getting-started.html)
 - [Heroku Documentation](https://devcenter.heroku.com/)
 - [Heroku Buildpack](https://github.com/mars/create-react-app-buildpack#user-content-requires)
+- [Redux](https://redux.js.org/)
 
 ## 📝 License
 
