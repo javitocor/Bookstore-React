@@ -1,7 +1,27 @@
 {
   "name": "bookstore-react",
   "version": "0.1.0",
+  "description": "A bookstore webapp for Magic-books Inc., a fictional company based in Germany, using REACT&REDUX.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javitocor/Bookstore-React.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "microverse",
+    "odin",
+    "redux"
+  ],
+  "author": "Javier Correas",
+  "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+  "bugs": {
+    "url": "https://github.com/javitocor/Bookstore-React/issues"
+  },
+  "homepage": "https://bookstore--react.herokuapp.com/",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
