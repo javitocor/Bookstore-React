@@ -17,12 +17,12 @@ class BooksForm extends React.Component {
   render(){
     return (
       <form>
-    <input className="" type="text" placeholder="Enter the Title" id="title" name="title" />
-    <select>
-      {dropMenu}
-    </select>
-    <button type="submit">Add Book</button>
-  </form>
+        <input className="" type="text" placeholder="Enter the Title" id="title" name="title" />
+        <select>
+          {dropMenu}
+        </select>
+        <button type="submit">Add Book</button>
+      </form>
     )
   }
 }
