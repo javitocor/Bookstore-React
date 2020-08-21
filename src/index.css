@@ -25,3 +25,36 @@ code {
     'Courier New',
     monospace;
 }
+.panel-bg {
+  width: 1400px;
+  height: 95px;
+  display: flex;
+  background-color: #ffffff;
+}
+.Bookstore-CMS {
+  width: 240px;
+  margin-left: 29px;
+  margin-right: 47px;
+  height: 37px;
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #0290ff;
+}
+
+.BOOKS {
+  width: 59px;
+  height: 16px;
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.9px;
+  color: black;
+}
