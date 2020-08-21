@@ -1,22 +1,26 @@
-/* eslint-disable no-useless-constructor */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import Book from '../components/Book';
 import { removeBook } from '../actions/index';
+import CategoryFilter from '../components/CategoryFilter';
 
 class BooksList extends Component {
   constructor(props) {
     super(props);
+
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
-  handleRemove=book => {
-    this.props.removeBook(this.props.books.findIndex(book1 => book1 === book));
+  handleRemove = book => {
+    const { removeBook } = this.props;
+    const { books } = this.props;
+    const index = books.findIndex(book1 => book1 === book);
+    removeBook(index);
   }
 
   render() {
+    const { books } = this.props;
     return (
       <div>
         <table>
@@ -25,12 +29,13 @@ class BooksList extends Component {
               <td>Id</td>
               <td>Title</td>
               <td>Category</td>
-              <td>Action</td>
+              <td>Remove</td>
+              <td><CategoryFilter /></td>
             </tr>
           </thead>
           <tbody>
 
-            {this.props.books.map(
+            {books.map(
               book => <Book key={book.id} book={book} trigerParent={this.handleRemove} />,
             )}
 
@@ -43,6 +48,7 @@ class BooksList extends Component {
 
 BooksList.propTypes = {
   books: PropTypes.instanceOf(Object).isRequired,
+  removeBook: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({ books: state.books });

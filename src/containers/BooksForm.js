@@ -1,13 +1,13 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable max-len */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { generateId } from '../sampleBooks';
 import { createBook } from '../actions/index';
 
 const BookCategories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-const dropMenu = BookCategories.map(category => <option key={category} value={category}>{category}</option>);
+const dropMenu = BookCategories.map(
+  category => <option key={category} value={category}>{category}</option>,
+);
 
 class BooksForm extends React.Component {
   constructor(props) {
@@ -34,7 +34,8 @@ class BooksForm extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.createBook(this.state);
+    const { createBook } = this.props;
+    createBook(this.state);
     this.setState({
       id: generateId(),
       title: '',
@@ -55,6 +56,10 @@ class BooksForm extends React.Component {
     );
   }
 }
+
+BooksForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => ({
   createBook: book => {
