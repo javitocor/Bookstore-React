@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { connect } from 'react-redux';
 import { generateId } from '../sampleBooks';
+import { createBook } from '../actions/index';
 
 const BookCategories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 const dropMenu = BookCategories.map(category => <option key={category} value={category}>{category}</option>);
@@ -29,8 +31,14 @@ class BooksForm extends React.Component {
     }
   }
 
-  handleSubmit() {
-
+  handleSubmit(event) {
+    this.props.createBook(this.state);
+    this.setState({
+      id: generateId(),
+      title: '',
+      category: BookCategories[0],
+    });
+    event.preventDefault();
   }
 
   render() {
@@ -40,10 +48,16 @@ class BooksForm extends React.Component {
         <select onChange={this.handleChange}>
           {dropMenu}
         </select>
-        <button type="submit">Add Book</button>
+        <button type="submit" onClick={this.handleSubmit}>Add Book</button>
       </form>
     );
   }
 }
 
-export default BooksForm;
+const mapDispatchToProps = dispatch => ({
+  createBook: book => {
+    dispatch(createBook(book));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(BooksForm);
