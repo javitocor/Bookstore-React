@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import booksReducer from './reducers/books';
 import './index.css';
 import App from './components/App';
 
-ReactDOM.render(
+const store = createStore(booksReducer);
 
-    <App />,
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );
