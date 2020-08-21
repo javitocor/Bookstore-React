@@ -6,15 +6,16 @@ const BookCategories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Lea
 const dropMenu = BookCategories.map(category => <option key={category} value={category}>{category}</option>);
 
 class BooksForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       id: generateId(),
       title: '',
-      category= BookCategories[0],
-    }
+      category: BookCategories[0],
+    };
   }
-  render(){
+
+  render() {
     return (
       <form>
         <input className="" type="text" placeholder="Enter the Title" id="title" name="title" />
@@ -23,7 +24,7 @@ class BooksForm extends React.Component {
         </select>
         <button type="submit">Add Book</button>
       </form>
-    )
+    );
   }
 }
 
