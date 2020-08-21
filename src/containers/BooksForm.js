@@ -17,8 +17,16 @@ class BooksForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
-
+  handleChange(event) {
+    if (event.target.name === 'title') {
+      this.setState({
+        title: event.target.value,
+      });
+    } else {
+      this.setState({
+        category: event.target.value,
+      });
+    }
   }
 
   handleSubmit() {
@@ -28,8 +36,8 @@ class BooksForm extends React.Component {
   render() {
     return (
       <form>
-        <input className="" type="text" placeholder="Enter the Title" id="title" name="title" />
-        <select>
+        <input className="" type="text" placeholder="Enter the Title" id="title" name="title" onChange={this.handleChange} />
+        <select onChange={this.handleChange}>
           {dropMenu}
         </select>
         <button type="submit">Add Book</button>
