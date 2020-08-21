@@ -45,10 +45,11 @@ class BooksForm extends React.Component {
   }
 
   render() {
+    const { title, category } = this.state;
     return (
       <form>
-        <input value={this.state.title} className="" type="text" placeholder="Enter the Title" id="title" name="title" onChange={this.handleChange} />
-        <select onChange={this.handleChange} value={this.state.category}>
+        <input value={title} className="" type="text" placeholder="Enter the Title" id="title" name="title" onChange={this.handleChange} />
+        <select onChange={this.handleChange} value={category}>
           {dropMenu}
         </select>
         <button type="submit" onClick={this.handleSubmit}>Add Book</button>
