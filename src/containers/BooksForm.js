@@ -13,6 +13,16 @@ class BooksForm extends React.Component {
       title: '',
       category: BookCategories[0],
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange() {
+
+  }
+
+  handleSubmit() {
+
   }
 
   render() {
