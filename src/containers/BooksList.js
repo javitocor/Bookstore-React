@@ -1,37 +1,31 @@
-import React, { Component } from 'react';
-import Proptypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
 
-const mapStateToProps = state => ({ books: state.books });
+const BooksList = ({ books }) => (
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Title</td>
+          <td>Category</td>
+        </tr>
+      </thead>
+      <tbody>
 
-class BooksList extends Component {
-  constructor(props) {
-    super(props);
-    const { books } = props;
-  }
+        {books.map(book => <Book key={book.id} book={book} />)}
 
-  render() {
-    return (
-      <div>
-        <table>
-          <thead>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Category</th>
-          </thead>
-          <tbody>
+      </tbody>
+    </table>
+  </div>
+);
 
-            {this.books.map(book => <Book key={book.id} book={book} />)}
-
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
-BooksList.prototype = {
-  book: Proptypes.instanceOf(Object).isRequired,
+BooksList.propTypes = {
+  books: PropTypes.instanceOf(Object).isRequired,
 };
+
+const mapStateToProps = state => ({ books: state.books });
 
 export default connect(mapStateToProps, null)(BooksList);

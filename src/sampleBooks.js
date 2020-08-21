@@ -1,4 +1,4 @@
-export const generateId = () => (Math.floor(Math.random * 100) + 1);
+export const generateId = () => (Math.floor(Math.random() * 100) + 1);
 
 export default {
   books: [

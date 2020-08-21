@@ -1,21 +1,17 @@
-import React, { Component } from 'react';
+/* eslint-disable max-len */
+import React from 'react';
 
-export default class BooksForm extends Component {
-  constructor(props) {
-    super(props);
-    const BookCategories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-  }
+const BookCategories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+const dropMenu = BookCategories.map(category => <option key={category} value={category}>{category}</option>);
 
-  render() {
-    return (
-      <form>
-        <input className="" type="text" placeholder="Enter the Title" />
-        <select>
-          {this.BookCategories.map(category => <option key={category} value={category}>{category}</option>)}
-        </select>
+const BooksForm = () => (
+  <form>
+    <input className="" type="text" placeholder="Enter the Title" id="title" name="title" />
+    <select>
+      {dropMenu}
+    </select>
+    <button type="submit">Add Book</button>
+  </form>
+);
 
-        <button type="submit">create</button>
-      </form>
-    );
-  }
-}
+export default BooksForm;

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { CREATE_BOOK, REMOVE_BOOK } from '../actions/index';
 
 const booksReducer = (state = [], action) => {
