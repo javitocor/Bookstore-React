@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import Book from '../components/Book';
 import { removeBook } from '../actions/index';
+import { changeFilter } from '../actions/index';
 import CategoryFilter from '../components/CategoryFilter';
 
 class BooksList extends Component {
@@ -10,6 +11,7 @@ class BooksList extends Component {
     super(props);
 
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
   handleRemove = book => {
@@ -19,8 +21,16 @@ class BooksList extends Component {
     removeBook(index);
   }
 
+  handleFilterChange(event) {
+    const { changeFilter } = this.props;
+    const category = event.target.value;
+    changeFilter(category);
+  }
+
   render() {
-    const { books } = this.props;
+    const { books, filter } = this.props;
+    const cat = filter;
+    const filteredBooks = books.filter(book => {return book.category === cat});
     return (
       <div>
         <table>
@@ -30,12 +40,12 @@ class BooksList extends Component {
               <td>Title</td>
               <td>Category</td>
               <td>Remove</td>
-              <td><CategoryFilter /></td>
+              <td><CategoryFilter handleFilterChange={this.handleFilterChange} /></td>
             </tr>
           </thead>
           <tbody>
 
-            {books.map(
+            {filteredBooks.map(
               book => <Book key={book.id} book={book} trigerParent={this.handleRemove} />,
             )}
 
@@ -49,13 +59,21 @@ class BooksList extends Component {
 BooksList.propTypes = {
   books: PropTypes.instanceOf(Object).isRequired,
   removeBook: PropTypes.func.isRequired,
+  changeFilter: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ books: state.books });
+const mapStateToProps = state => ({
+  books: state.books,
+  filter: state.filter,
+});
+
 const mapDispatchToProps = dispatch => ({
   removeBook: book => {
     dispatch(removeBook(book));
   },
+  changeFilter: category => ({
+    dispatch(changeFilter(category));
+  }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

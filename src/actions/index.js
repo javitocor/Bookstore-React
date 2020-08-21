@@ -12,7 +12,7 @@ export const removeBook = index => ({
   index,
 });
 
-export const changeFilter = category => ({
+export const changeFilter = filter => ({
   type: CHANGE_FILTER,
-  category,
+  filter,
 });
