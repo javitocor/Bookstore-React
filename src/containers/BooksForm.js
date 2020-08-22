@@ -22,15 +22,12 @@ class BooksForm extends React.Component {
   }
 
   handleChange(event) {
-    if (event.target.name === 'title') {
-      this.setState({
-        title: event.target.value,
-      });
-    } else {
-      this.setState({
-        category: event.target.value,
-      });
-    }
+    const { name } = event.target;
+
+    this.setState({
+      title: event.target.value,
+      [name]: event.target.value,
+    });
   }
 
   handleSubmit(event) {
