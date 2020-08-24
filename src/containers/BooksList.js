@@ -44,7 +44,7 @@ class BooksList extends Component {
         <main className="main">
           <div className="books-container">
             {filteredBooks.map(
-              book => <Book key={book.id} book={book} trigerParent={this.handleRemoveBook} />,
+              book => <Book key={book.id} book={book} trigerParent={this.handleRemove} />,
             )}
           </div>
         </main>
