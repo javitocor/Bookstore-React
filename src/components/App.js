@@ -4,9 +4,12 @@ import BooksForm from '../containers/BooksForm';
 
 export default function App() {
   return (
-    <div>
-      <BooksForm />
-      <BooksList />
+    <div className="Bookstore-CMS">
+      <div className="panel-bg">
+        <BooksList />
+        <hr />
+        <BooksForm />
+      </div>
     </div>
   );
 }

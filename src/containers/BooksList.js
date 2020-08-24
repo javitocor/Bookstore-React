@@ -31,24 +31,23 @@ class BooksList extends Component {
     const filteredBooks = (cat === 'All') ? books : books.filter(book => book.category === cat);
     return (
       <div>
-        <table>
-          <thead>
-            <tr>
-              <td>Id</td>
-              <td>Title</td>
-              <td>Category</td>
-              <td>Remove</td>
-              <td><CategoryFilter handleFilterChange={this.handleFilterChange} /></td>
-            </tr>
-          </thead>
-          <tbody>
-
+        <header>
+          <div className="header">
+            <h1 className="title">Bookstore CMS</h1>
+            <span className="books">BOOKS</span>
+            <span className="categories"><CategoryFilter handleFilterChange={this.handleFilterChange} /></span>
+            <div className="image">
+              <span className="icon"><i className="fas fa-user" /></span>
+            </div>
+          </div>
+        </header>
+        <main className="main">
+          <div className="books-container">
             {filteredBooks.map(
-              book => <Book key={book.id} book={book} trigerParent={this.handleRemove} />,
+              book => <Book key={book.id} book={book} trigerParent={this.handleRemoveBook} />,
             )}
-
-          </tbody>
-        </table>
+          </div>
+        </main>
       </div>
     );
   }
