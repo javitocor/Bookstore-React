@@ -21,13 +21,12 @@ class BooksForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    const { name } = event.target;
-
-    this.setState({
-      title: event.target.value,
-      [name]: event.target.value,
-    });
+  handleChange(e) {
+    if (e.target.name === 'title') {
+      this.setState({ title: e.target.value });
+    } else if (e.target.name === 'category') {
+      this.setState({ category: e.target.value });
+    }
   }
 
   handleSubmit(event) {
@@ -42,15 +41,22 @@ class BooksForm extends React.Component {
   }
 
   render() {
-    const { title, category } = this.state;
+    const { title } = this.state;
     return (
-      <form>
-        <input value={title} className="" type="text" placeholder="Enter the Title" id="title" name="title" onChange={this.handleChange} />
-        <select onChange={this.handleChange} value={category}>
-          {dropMenu}
-        </select>
-        <button type="submit" onClick={this.handleSubmit}>Add Book</button>
-      </form>
+      <div className="cont">
+        <div className="form-container">
+          <h3>ADD NEW BOOK</h3>
+          <form>
+            <input type="text" id="title" name="title" placeholder="Book Title" onChange={this.handleChange} value={title} />
+
+            <select id="category" name="category" onChange={this.handleChange}>
+              <option key="category" value="category" selected>Category</option>
+              {dropMenu}
+            </select>
+            <button type="submit" onClick={this.handleSubmit}>Add Book</button>
+          </form>
+        </div>
+      </div>
     );
   }
 }

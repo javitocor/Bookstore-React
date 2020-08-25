@@ -9,7 +9,7 @@ export default {
     },
     {
       id: generateId(),
-      title: 'c++,ruby on rails,javascript',
+      title: 'Learn React',
       category: 'Learning',
     },
     {

@@ -7,8 +7,9 @@ const dropMenu = BookCategories.map(
 );
 
 const CategoryFilter = ({ handleFilterChange }) => (
-  <select onChange={event => handleFilterChange(event)}>
-    <option key="All" value="All">All</option>
+  <select id="cat" onChange={event => handleFilterChange(event)}>
+    <option value="All">CATEGORIES</option>
+    <option value="All">All</option>
     {dropMenu}
   </select>
 );
